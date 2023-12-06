@@ -1,1 +1,1 @@
-from example import addOne
+from .example import addOne

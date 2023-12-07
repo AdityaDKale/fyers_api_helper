@@ -213,6 +213,21 @@ pluggy = ">=0.12,<2.0"
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
+name = "waitress"
+version = "2.1.2"
+description = "Waitress WSGI server"
+optional = false
+python-versions = ">=3.7.0"
+files = [
+    {file = "waitress-2.1.2-py3-none-any.whl", hash = "sha256:7500c9625927c8ec60f54377d590f67b30c8e70ef4b8894214ac6e4cad233d2a"},
+    {file = "waitress-2.1.2.tar.gz", hash = "sha256:780a4082c5fbc0fde6a2fcfe5e26e6efc1e8f425730863c04085769781f51eba"},
+]
+
+[package.extras]
+docs = ["Sphinx (>=1.8.1)", "docutils", "pylons-sphinx-themes (>=1.0.9)"]
+testing = ["coverage (>=5.0)", "pytest", "pytest-cover"]
+
+[[package]]
 name = "werkzeug"
 version = "3.0.1"
 description = "The comprehensive WSGI web application library."
@@ -232,4 +247,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "46f6778b8f6c67a6994d5620ea4d812670330dfb6b3175ffeb79696eceebe8e1"
+content-hash = "71a8577923bc7d3a93df7e0e973d54e851733e24a970b87b499218905f12c2c8"

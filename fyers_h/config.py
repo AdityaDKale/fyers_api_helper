@@ -30,24 +30,24 @@ def save():
             'SECRET_ID': secret_id,
             'REDIRECT_URL': redirect_url
             }
-    with open('data/config.json', 'w') as f:
+    with open('.config.json', 'w') as f:
         json.dump(data, f)
 
 
 def get_app_id():
-    with open('data/config.json', 'r') as f:
+    with open('.config.json', 'r') as f:
         data = json.load(f)
     return data["APP_ID"]
 
 
 def get_secret_id():
-    with open('data/config.json', 'r') as f:
+    with open('.config.json', 'r') as f:
         data = json.load(f)
     return data["SECRET_ID"]
 
 
 def get_redirect_url():
-    with open('data/config.json', 'r') as f:
+    with open('.config.json', 'r') as f:
         data = json.load(f)
     return data["REDIRECT_URL"]
 

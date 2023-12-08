@@ -30,8 +30,7 @@ def save_config():
             'SECRET_ID': secret_id,
             'REDIRECT_URL': redirect_url
             }
-    with open('.config.json', 'w') as f:
-        json.dump(data, f)
+    set_data(data)
 
 
 def load_config():
@@ -58,6 +57,17 @@ def get_redirect_url():
 def set_config():
     webbrowser.open_new('http://localhost:7001')
     serve(app, host='0.0.0.0', port=7001)
+
+
+def set_config_manually(option, value):
+    data = load_config()
+    data[option] = value
+    set_data(data)
+
+
+def set_data(data):
+    with open('.config.json', 'w') as f:
+        json.dump(data, f)
 
 
 def print_config():

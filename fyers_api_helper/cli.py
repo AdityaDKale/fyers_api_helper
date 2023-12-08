@@ -1,5 +1,5 @@
 import argparse
-from .config import set_config, print_config
+from .config import set_config, set_config_manually, print_config
 
 
 def function4():
@@ -64,7 +64,7 @@ def main():
         if args.print_config:
             print_config()
         elif args.set_config:
-            set_config(args.set_config[0], args.set_config[1])
+            set_config_manually(args.set_config[0], args.set_config[1])
         elif args.func:
             args.func()
     elif args.command == 'access':

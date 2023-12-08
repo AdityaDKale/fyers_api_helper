@@ -11,6 +11,10 @@ secret_id = ''
 redirect_url = ''
 
 
+class FyersAPIHelper(Exception):
+    pass
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     global app_id, secret_id, redirect_url
@@ -34,8 +38,12 @@ def save_config():
 
 
 def load_config():
-    with open('.config.json', 'r') as f:
-        data = json.load(f)
+    try:
+        with open('.config.json', 'r') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        raise FyersAPIHelper(
+                'Configuration not found. Please set up configuration first.')
     return data
 
 
@@ -56,7 +64,7 @@ def get_redirect_url():
 
 def set_config():
     webbrowser.open_new('http://localhost:7001')
-    serve(app, host='0.0.0.0', port=7001)
+    serve(app, host='127.0.0.1', port=7001)
 
 
 def set_config_manually(option, value):

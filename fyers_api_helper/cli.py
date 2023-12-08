@@ -7,60 +7,73 @@ def function4():
 
 
 def main():
+    '''
+    Command Line Interface for Fyers API Helper
+    '''
+
     parser = argparse.ArgumentParser(
-        description='CLI for configuration and access operations.')
+        description='CLI for configuration and access operations.'
+    )
 
     subparsers = parser.add_subparsers(
-            title='subcommands',
-            dest='command',
-            help='Choose a command')
+        title='subcommands',
+        dest='command',
+        help='Choose a command'
+    )
 
     # Config subcommand
     config_parser = subparsers.add_parser('config', help='Open the config')
     config_parser.set_defaults(func=set_config)
     config_parser.add_argument(
-            '-p',
-            '--print',
-            action='store_true',
-            dest='print_config',
-            help='Print the config')
+        '-p',
+        '--print',
+        action='store_true',
+        dest='print_config',
+        help='Print the config'
+    )
     config_parser.add_argument(
-            '-s',
-            '--set',
-            nargs=2,
-            metavar=('KEY', 'VALUE'),
-            dest='set_config',
-            help='Set config manually')
+        '-s',
+        '--set',
+        nargs=2,
+        metavar=('KEY', 'VALUE'),
+        dest='set_config',
+        help='Set config manually'
+    )
 
     # Access subcommand
     access_parser = subparsers.add_parser(
-            'access',
-            help='Open the access')
+        'access',
+        help='Open the access'
+    )
     access_parser.set_defaults(func=function4)
     access_parser.add_argument(
-            '-v',
-            '--is-valid',
-            action='store_true',
-            dest='is_valid',
-            help='Check if the access token is valid')
+        '-v',
+        '--is-valid',
+        action='store_true',
+        dest='is_valid',
+        help='Check if the access token is valid'
+    )
     access_parser.add_argument(
-            '-p',
-            '--print',
-            action='store_true',
-            dest='print_access',
-            help='Print the access token')
-    access_parser.add_argument('-s',
-                               '--set',
-                               nargs=2,
-                               metavar=(
-                                   'TOKEN',
-                                   'AUTODATE'),
-                               dest='set_access',
-                               help='Set access token manually')
+        '-p',
+        '--print',
+        action='store_true',
+        dest='print_access',
+        help='Print the access token'
+    )
+    access_parser.add_argument(
+        '-s',
+        '--set',
+        nargs=2,
+        metavar=('TOKEN', 'AUTODATE'),
+        dest='set_access',
+        help='Set access token manually'
+    )
 
     args = parser.parse_args()
 
-    if args.command == 'config':
+    if not args.command:
+        parser.print_help()
+    elif args.command == 'config':
         if args.print_config:
             print_config()
         elif args.set_config:

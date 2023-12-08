@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fyers_h"
+name = "fyers_api_helper"
 version = "0.1.1a0"
 description = "Fyers API Helper Package"
 authors = ["Aditya Kale <dev.adityakale@gmail.com>"]
@@ -19,4 +19,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-fyers_h = "fyers_h.cli:main"
+fyersh = "fyers_api_helper.cli:main"

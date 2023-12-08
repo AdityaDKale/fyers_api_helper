@@ -18,13 +18,13 @@ def index():
         app_id = request.form['app_id']
         secret_id = request.form['secret_id']
         redirect_url = request.form['redirect_url']
-        save()
+        save_config()
         print("Information Saved Successfully .. Press Ctrl-C to continue")
         return "Information Saved Successfully"
     return render_template('config.html')
 
 
-def save():
+def save_config():
     data = {
             'APP_ID': app_id,
             'SECRET_ID': secret_id,
@@ -34,27 +34,39 @@ def save():
         json.dump(data, f)
 
 
-def get_app_id():
+def load_config():
     with open('.config.json', 'r') as f:
         data = json.load(f)
+    return data
+
+
+def get_app_id():
+    data = load_config()
     return data["APP_ID"]
 
 
 def get_secret_id():
-    with open('.config.json', 'r') as f:
-        data = json.load(f)
+    data = load_config()
     return data["SECRET_ID"]
 
 
 def get_redirect_url():
-    with open('.config.json', 'r') as f:
-        data = json.load(f)
+    data = load_config()
     return data["REDIRECT_URL"]
 
 
 def set_config():
     webbrowser.open_new('http://localhost:7001')
     serve(app, host='0.0.0.0', port=7001)
+
+
+def print_config():
+    data = load_config()
+    print(f'''
+APP ID:         {data["APP_ID"]}
+SECRET ID:      {data["SECRET_ID"]}
+REDIRECT URL:   {data["REDIRECT_URL"]}
+          ''')
 
 
 if __name__ == "__main__":

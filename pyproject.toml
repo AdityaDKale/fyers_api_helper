@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 flask = "^3.0.0"
 waitress = "^2.1.2"
+fyers-apiv3 = "^3.0.6"
 
 
 [tool.poetry.group.test.dependencies]

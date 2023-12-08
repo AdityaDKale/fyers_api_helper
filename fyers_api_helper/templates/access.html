@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/access_index.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/access_global.css') }}" />
+    <link rel="stylesheet" href="./access-token-page.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="access-token-page">
+      <div class="access-token-page-inner">
+        <div class="frame-group">
+          <div class="fyersapihelperlogo-2-parent">
+            <img
+              class="fyersapihelperlogo-2-icon"
+              alt=""
+              src="{{ url_for('static', filename='images/config_logo.svg') }}"
+            />
+
+            <div class="fyers-access-token">Fyers Access Token Settings</div>
+          </div>
+          <form method="POST">
+            <div class="rectangle-parent">
+              <textarea name="access_token" class="rectangle-textarea" placeholder="Enter Access Token">{{ auth_code }}</textarea>
+              <input name="date" class="rectangle-input" type="text" placeholder="Enter Date" value="{{ today }}" />
+            </div>
+            <div class="save-wrapper">
+              <button type="submit" class="save1">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,9 +1,6 @@
 import argparse
 from .config import set_config, set_config_manually, print_config
-
-
-def function4():
-    pass
+from .access import run, print_access
 
 
 def main():
@@ -45,7 +42,7 @@ def main():
         'access',
         help='Open the access'
     )
-    access_parser.set_defaults(func=function4)
+    access_parser.set_defaults(func=run)
     access_parser.add_argument(
         '-v',
         '--is-valid',
@@ -84,9 +81,11 @@ def main():
         if args.is_valid:
             pass  # Add logic for function4
         elif args.print_access:
-            pass  # Add logic for function4
+            print_access()
         elif args.set_access:
             pass  # Add logic for function7
+        elif args.func:
+            args.func()
 
 
 if __name__ == "__main__":

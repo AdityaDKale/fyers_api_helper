@@ -1,0 +1,115 @@
+.fyersapihelperlogo-2-icon {
+  position: relative;
+  width: 168px;
+  height: 73px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.fyers-access-token {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 50px;
+  flex-shrink: 0;
+}
+.fyersapihelperlogo-2-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 38px;
+  z-index: 0;
+}
+.rectangle-input,
+.rectangle-textarea {
+  border: 1px solid var(--color-royalblue);
+  background-color: var(--color-white);
+  position: relative;
+  border-radius: var(--br-3xs);
+  box-sizing: border-box;
+  width: 400px;
+  height: 188px;
+}
+.rectangle-input {
+  height: 50px;
+}
+.rectangle-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-7xl);
+  z-index: 1;
+}
+.save1 {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 30px;
+  flex-shrink: 0;
+}
+.save-wrapper {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  position: absolute;
+  top: 477px;
+  left: 280px;
+  border-radius: var(--br-3xs);
+  background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0));
+  border: 1px solid var(--color-royalblue);
+  box-sizing: border-box;
+  flex-direction: column;
+  z-index: 2;
+  font-size: var(--font-size-3xs);
+}
+.frame-group {
+  width: 400px;
+  height: 519px;
+  justify-content: flex-start;
+  position: relative;
+  gap: var(--gap-7xl);
+}
+.access-token-page,
+.access-token-page-inner,
+.frame-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.access-token-page-inner {
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-royalblue);
+  box-sizing: border-box;
+  width: 520px;
+  height: 630px;
+  justify-content: flex-end;
+  padding: 46px 0;
+}
+.access-token-page {
+  position: relative;
+  background-color: var(--color-gray);
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-inter);
+}
+
+button {
+  background-color: var(--color-white);
+  border: 0px;
+  margin-left:10px;
+  margin-right:10px;
+  outline: none;
+}

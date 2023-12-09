@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fyers_api_helper"
-version = "0.1.1a0"
+version = "0.5.1"
 description = "Fyers API Helper Package"
 authors = ["Aditya Kale <dev.adityakale@gmail.com>"]
 readme = "README.md"
@@ -11,9 +11,17 @@ flask = "^3.0.0"
 waitress = "^2.1.2"
 fyers-apiv3 = "^3.0.6"
 
+[tool.poetry.group.test]
+optional = true
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.3"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+twine = "^4.0.2"
 
 [build-system]
 requires = ["poetry-core"]

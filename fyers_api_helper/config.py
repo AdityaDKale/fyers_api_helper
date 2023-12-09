@@ -38,12 +38,19 @@ def save_config():
 
 
 def load_config():
+    # I have no idea why this works with try catch block only.
     try:
         with open('.config.json', 'r') as f:
             data = json.load(f)
     except FileNotFoundError:
-        raise FyersAPIHelper(
-                'Configuration not found. Please set up configuration first.')
+        data = {
+            'APP_ID': '',
+            'SECRET_ID': '',
+            'REDIRECT_URL': ''
+            }
+        set_data(data)
+        with open('.config.json', 'r') as f:
+            data = json.load(f)
     return data
 
 
@@ -74,17 +81,21 @@ def set_config_manually(option, value):
 
 
 def set_data(data):
-    with open('.config.json', 'w') as f:
+    with open('.config.json', 'w+') as f:
         json.dump(data, f)
 
 
 def print_config():
-    data = load_config()
-    print(f'''
+    try:
+        data = load_config()
+        print(f'''
 APP ID:         {data["APP_ID"]}
 SECRET ID:      {data["SECRET_ID"]}
 REDIRECT URL:   {data["REDIRECT_URL"]}
-          ''')
+            ''')
+    except Exception:
+        print('Configuration not found. Please set up configuration first.')
+        exit(1)
 
 
 if __name__ == "__main__":

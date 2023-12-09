@@ -1,6 +1,7 @@
 import argparse
 from .config import set_config, set_config_manually, print_config
-from .access import run, print_access
+from .access import run, print_access, set_access_manually, check_valid
+from .access import load_access
 
 
 def main():
@@ -79,11 +80,16 @@ def main():
             args.func()
     elif args.command == 'access':
         if args.is_valid:
-            pass  # Add logic for function4
+            try:
+                data = load_access()
+                check_valid(data, silent=False)
+            except Exception:
+                print("Invalid Access Token. Please Generate Token Again")
+                exit(1)
         elif args.print_access:
             print_access()
         elif args.set_access:
-            pass  # Add logic for function7
+            set_access_manually(args.set_access[0], args.set_access[1])
         elif args.func:
             args.func()
 

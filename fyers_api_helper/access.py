@@ -1,5 +1,5 @@
-from flask import Flask, request, render_template
 from .config import get_app_id, get_secret_id, get_redirect_url
+from flask import Flask, request, render_template
 from waitress import serve
 import webbrowser
 import json
@@ -13,13 +13,21 @@ app = Flask(__name__)
 app.secret_key = 'SAMPLE SECRET'
 
 access_token = ''
-APP_ID = get_app_id()
-SECRET_KEY = get_secret_id()
-REDIRECT_URL = get_redirect_url()
+auth_code = ''
+appSession = None
+
+try:
+    APP_ID = get_app_id()
+    SECRET_KEY = get_secret_id()
+    REDIRECT_URL = get_redirect_url()
+except Exception:
+    APP_ID = ""
+    SECRET_KEY = ""
+    REDIRECT_URL = ""
 
 
-def get_access_token():
-    global APP_ID, REDIRECT_URL, SECRET_KEY
+def get_access(silent=False):
+    global APP_ID, REDIRECT_URL, SECRET_KEY, appSession
     grant_type = 'authorization_code'
     response_type = 'code'
     state = 'sample'
@@ -31,7 +39,10 @@ def get_access_token():
             state=state,
             grant_type=grant_type)
     generateTokenUrl = appSession.generate_authcode()
-    webbrowser.open(generateTokenUrl, new=1)
+    if not silent:
+        webbrowser.open(generateTokenUrl, new=1)
+    else:
+        print(generateTokenUrl)
 
 
 class FyersAPIHelper(Exception):
@@ -40,18 +51,21 @@ class FyersAPIHelper(Exception):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global access_token, today
+    global access_token, today, auth_code, appSession
     auth_code = request.args.get('auth_code', '')
     if request.method == 'POST':
-        access_token = request.form['access_token']
+        auth_code = request.form['auth_code']
         today = request.form['date']
+        appSession.set_token(auth_code)
+        response = appSession.generate_token()
+        access_token = response['access_token']
         save_access()
         print("Access Token saved Successfully .. Press Ctrl-C to continue")
         return "Access Token saved Successfully"
     return render_template(
             'access.html',
             auth_code=auth_code,
-            today=today.strftime('%Y-%m-%d'))
+            today=today.strftime('%d-%m-%Y'))
 
 
 def save_access():
@@ -67,8 +81,13 @@ def load_access():
         with open('.access.json', 'r') as f:
             data = json.load(f)
     except FileNotFoundError:
-        raise FyersAPIHelper(
-                'Access Token Not Found. Please Generate a new Token.')
+        data = {
+            'ACCESS_TOKEN': '',
+            'DATE': '',
+            }
+        set_data(data)
+        with open('.access.json', 'r') as f:
+            data = json.load(f)
     return data
 
 
@@ -83,7 +102,7 @@ def set_access_manually(option, value):
 
 
 def set_data(data):
-    with open('.access.json', 'w') as f:
+    with open('.access.json', 'w+') as f:
         json.dump(data, f)
 
 
@@ -95,8 +114,25 @@ DATE:           {data["DATE"]}
           ''')
 
 
+def check_valid(data, silent=True):
+    if data["DATE"] == today.strftime('%d-%m-%Y'):
+        if not silent:
+            print("Access Token Valid")
+        return True
+    else:
+        if not silent:
+            print("Access Token Invalid")
+        return False
+
+
+def get_access_token():
+    data = load_access()
+    valid = check_valid(data)
+    return data["ACCESS_TOKEN"] if valid else None
+
+
 def run():
-    thread_get_access_token = threading.Thread(target=get_access_token)
+    thread_get_access_token = threading.Thread(target=get_access)
     thread_get_access_token.start()
     set_access()
 

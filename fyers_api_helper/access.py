@@ -6,8 +6,11 @@ import json
 from datetime import datetime
 from fyers_apiv3 import fyersModel
 import threading
+import os
 
 today = datetime.today()
+
+ACCESS_FILE_PATH = os.path.join(os.path.expanduser("~"), ".access.json")
 
 app = Flask(__name__)
 app.secret_key = 'SAMPLE SECRET'
@@ -78,7 +81,7 @@ def save_access():
 
 def load_access():
     try:
-        with open('.access.json', 'r') as f:
+        with open(ACCESS_FILE_PATH, 'r') as f:
             data = json.load(f)
     except FileNotFoundError:
         data = {
@@ -86,7 +89,7 @@ def load_access():
             'DATE': '',
             }
         set_data(data)
-        with open('.access.json', 'r') as f:
+        with open(ACCESS_FILE_PATH, 'r') as f:
             data = json.load(f)
     return data
 
@@ -102,7 +105,7 @@ def set_access_manually(option, value):
 
 
 def set_data(data):
-    with open('.access.json', 'w+') as f:
+    with open(ACCESS_FILE_PATH, 'w+') as f:
         json.dump(data, f)
 
 

@@ -2,6 +2,7 @@ from flask import Flask, request, render_template
 from waitress import serve
 import webbrowser
 import json
+import os
 
 app = Flask(__name__)
 app.secret_key = 'SAMPLE SECRET'
@@ -9,6 +10,8 @@ app.secret_key = 'SAMPLE SECRET'
 app_id = ''
 secret_id = ''
 redirect_url = ''
+
+CONFIG_FILE_PATH = os.path.join(os.path.expanduser("~"), ".config.json")
 
 
 class FyersAPIHelper(Exception):
@@ -40,7 +43,7 @@ def save_config():
 def load_config():
     # I have no idea why this works with try catch block only.
     try:
-        with open('.config.json', 'r') as f:
+        with open(CONFIG_FILE_PATH, 'r') as f:
             data = json.load(f)
     except FileNotFoundError:
         data = {
@@ -49,7 +52,7 @@ def load_config():
             'REDIRECT_URL': ''
             }
         set_data(data)
-        with open('.config.json', 'r') as f:
+        with open(CONFIG_FILE_PATH, 'r') as f:
             data = json.load(f)
     return data
 
@@ -81,7 +84,7 @@ def set_config_manually(option, value):
 
 
 def set_data(data):
-    with open('.config.json', 'w+') as f:
+    with open(CONFIG_FILE_PATH, 'w+') as f:
         json.dump(data, f)
 
 

@@ -10,7 +10,7 @@ import os
 
 today = datetime.today()
 
-ACCESS_FILE_PATH = os.path.join(os.path.expanduser("~"), ".access.json")
+ACCESS_FILE_PATH = os.path.join(os.path.expanduser("~"), ".fyers_access.json")
 
 app = Flask(__name__)
 app.secret_key = 'SAMPLE SECRET'

@@ -11,7 +11,7 @@ app_id = ''
 secret_id = ''
 redirect_url = ''
 
-CONFIG_FILE_PATH = os.path.join(os.path.expanduser("~"), ".config.json")
+CONFIG_FILE_PATH = os.path.join(os.path.expanduser("~"), ".fyers_config.json")
 
 
 class FyersAPIHelper(Exception):

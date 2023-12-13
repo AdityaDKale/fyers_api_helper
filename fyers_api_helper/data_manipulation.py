@@ -1,12 +1,18 @@
 from .config import get_app_id
 from .access import get_access_token
 from fyers_apiv3 import fyersModel
-from datetime import date, timedelta
+# from datetime import date
+from datetime import timedelta
 import pandas as pd
 import time
 
 APP_ID = get_app_id()
 ACCESS_TOKEN = get_access_token()
+
+fyers = fyersModel.FyersModel(
+       client_id=APP_ID,
+       token=ACCESS_TOKEN,
+       log_path="")
 
 
 def historical_bydate(symbol, start_date, end_date, resolution):
@@ -23,12 +29,6 @@ def historical_bydate(symbol, start_date, end_date, resolution):
         print("Unable to collect data ...\n\n")
         return fyers.history(data)
         raise e
-
-
-fyers = fyersModel.FyersModel(
-       client_id=APP_ID,
-       token=ACCESS_TOKEN,
-       log_path="")
 
 
 def get_data(fyers,
@@ -83,16 +83,18 @@ def get_data(fyers,
 
     return df
 
-
-start_data = date(2021, 1, 1)
-end_date = date(2022, 1, 1)
-df = get_data(fyers,
-              "NSE:NIFTY50-INDEX",
-              start_data,
-              end_date,
-              "1",
-              in_timestamp=False,
-              sleep=1)
-
-print(df)
-print(df.dtypes)
+# # Usage of get_data method
+#
+#
+# start_data = date(2021, 1, 1)
+# end_date = date(2022, 1, 1)
+# df = get_data(fyers,
+#               "NSE:NIFTY50-INDEX",
+#               start_data,
+#               end_date,
+#               "1",
+#               in_timestamp=False,
+#               sleep=1)
+#
+# print(df)
+# print(df.dtypes)

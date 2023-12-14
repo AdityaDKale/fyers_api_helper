@@ -69,13 +69,13 @@ def main():
 
     # Search subcommand
     search_parser = subparsers.add_parser('search',
-                                          help='Execute the search function')
+                                          help='Search Symbols')
     search_parser.set_defaults(func=search)
     search_parser.add_argument(
         'search_query',
         type=lambda x: int(x) if x is not None else None,
         nargs='?',
-        help='Search query (optional)'
+        help='Maximum number of matches (default=10)'
     )
 
     args = parser.parse_args()

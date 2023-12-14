@@ -1,7 +1,7 @@
 import argparse
 from .config import set_config, set_config_manually, print_config
-from .access import run, print_access, set_access_manually, check_valid
-from .access import load_access
+from .access import run, print_access, set_access_manually, check_valid, load_access
+from .search import search
 
 
 def main():
@@ -67,6 +67,17 @@ def main():
         help='Set access token manually'
     )
 
+    # Search subcommand
+    search_parser = subparsers.add_parser('search',
+                                          help='Execute the search function')
+    search_parser.set_defaults(func=search)
+    search_parser.add_argument(
+        'search_query',
+        type=lambda x: int(x) if x is not None else None,
+        nargs='?',
+        help='Search query (optional)'
+    )
+
     args = parser.parse_args()
 
     if not args.command:
@@ -91,6 +102,11 @@ def main():
         elif args.set_access:
             set_access_manually(args.set_access[0], args.set_access[1])
         elif args.func:
+            args.func()
+    elif args.command == 'search':
+        if args.search_query:
+            args.func(args.search_query)
+        else:
             args.func()
 
 

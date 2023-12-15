@@ -1,0 +1,9 @@
+version: 2
+build:
+ os: "ubuntu-22.04"
+ tools:
+   nodejs: "16"
+ commands:
+  - mkdir --parents $READTHEDOCS_OUTPUT/html/
+  - cp --recursive docs/* $READTHEDOCS_OUTPUT/html/
+  - mv $READTHEDOCS_OUTPUT/html/index.html $READTHEDOCS_OUTPUT/html/

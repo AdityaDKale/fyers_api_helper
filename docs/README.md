@@ -1,6 +1,4 @@
-<div style="text-align: center;">
-    <img src="images/config_logo.png" />
-</div>
+![logo](assets/images/config_logo.png)
 
 ----
 
@@ -26,8 +24,8 @@ This code is free and publicly available under the MIT open source license!
 
 - Step 2: Create a new Fyers App and set Redirect URL to `127.0.0.1:7000` (Ensure access to data for best use)
 
-<img src="images/Create App.png" />
-<img src="images/Create App2.png" />
+![Create App](assets/images/Create%20App.png)
+![Create App2](assets/images/Create%20App2.png)
 
 - Step 3: Open terminal and write 
 ```
@@ -41,7 +39,7 @@ fyersh config
 ```
  It will open a new browser window to save configuration details.
 
-<img src="images/Configuration.png">
+![Configuration](assets/images/Configuration.png)
 
 After saving Press Ctrl-C to continue.
 
@@ -49,7 +47,7 @@ After saving Press Ctrl-C to continue.
 ```
 fyersh access
 ```
-<img src="images/Access.png">
+![Access](assets/images/Access.png)
 
 Enter your login details and press Save to save the access token.
 

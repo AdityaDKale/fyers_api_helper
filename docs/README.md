@@ -51,4 +51,15 @@ fyersh access
 
 Enter your login details and press Save to save the access token.
 
-For more details visit docs.
+## Contribution Guidelines
+
+We welcome contributions to the Fyers API Helper! If you wish to contribute, please follow these guidelines:
+
+1. Fork the repository and create your branch from `main`.
+2. Make sure your code adheres to the existing style and conventions.
+3. Ensure that your commits are clear and concise.
+4. Open a pull request, describing the changes you made and why.
+
+## Disclaimer
+
+Fyers API Helper is not affiliated with or endorsed by Fyers. All trademarks and logos belong to their respective owners. Trading and investing in the stock market involve risk, and it is essential to conduct thorough research and seek professional advice. The authors and contributors of Fyers API Helper are not responsible for any financial losses or other damages resulting from the use of this library. Use it at your own risk.

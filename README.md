@@ -65,7 +65,7 @@ fyersh access
 
 Enter your login details and press Save to store the access token.
 
-For more details, refer to the [documentation](docs).
+For more details, refer to the [documentation](https://fyers-api-helper.readthedocs.io/en/latest/#/).
 
 ## Contribution Guidelines
 

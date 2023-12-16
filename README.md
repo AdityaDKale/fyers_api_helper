@@ -4,6 +4,8 @@
 
 ---
 [![Documentation Status](https://readthedocs.org/projects/fyers-api-helper/badge/?version=latest)](https://fyers-api-helper.readthedocs.io/en/latest/?badge=latest)
+[![License](https://img.shields.io/badge/license-MIT-blue)](/LICENSE)
+
 
 Welcome to the Fyers API Helper, a Python library designed to streamline your interaction with the Fyers API effortlessly. This library is offered freely to the public under the MIT open-source license.
 

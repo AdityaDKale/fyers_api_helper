@@ -6,4 +6,3 @@ build:
  commands:
   - mkdir --parents $READTHEDOCS_OUTPUT/html/
   - cp --recursive docs/* $READTHEDOCS_OUTPUT/html/
-  - mv $READTHEDOCS_OUTPUT/html/index.html $READTHEDOCS_OUTPUT/html/

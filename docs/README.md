@@ -52,6 +52,7 @@ fyersh access
 Enter your login details and press Save to save the access token.
 
 - Step 6: Basic Usage
+
 ```python
 from fyers_apiv3 import fyersModel
 from fyers_api_helper import get_app_id, get_access_token

@@ -81,6 +81,7 @@ def get_data(fyers,
         df['Date'] = df['Date'].dt.tz_localize('UTC')
         df['Date'] = df['Date'].dt.tz_convert('Asia/Kolkata')
 
+    df.reset_index(drop=True, inplace=True)
     return df
 
 # # Usage of get_data method

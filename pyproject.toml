@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fyers_api_helper"
-version = "0.7.1"
+version = "0.7.2"
 description = "Fyers API Helper Package"
 authors = ["Aditya Kale <dev.adityakale@gmail.com>"]
 readme = "README.md"

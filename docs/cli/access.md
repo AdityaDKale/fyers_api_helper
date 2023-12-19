@@ -40,7 +40,7 @@ $ fyersh access -s ACCESS_TOKEN <Your Access Token>
 $ fyersh access -s DATE <Date>
 ```
 
-!> <Date> should be in %d-%m-%Y format of strftime formats. Refer [Strftime cheetsheet](https://strftime.org/) for more details.
+!> Date should be in %d-%m-%Y format of strftime formats. Refer [Strftime cheetsheet](https://strftime.org/) for more details.
 
 ----
 
